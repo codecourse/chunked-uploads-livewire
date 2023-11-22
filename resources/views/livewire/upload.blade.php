@@ -30,7 +30,7 @@
                     return
                 }
 
-                console.log(JSON.parse(response.detail.response.body).file)
+                $wire.call('handleSuccess', file.name, JSON.parse(response.detail.response.body).file)
             })
 
             this.uploader.on('success', () => {
