@@ -13,7 +13,7 @@
 
             this.uploader = createUpload({
                 file: file,
-                endpoint: '{{ route('dummy') }}',
+                endpoint: '{{ route('livewire.upload') }}',
                 method: 'post',
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
