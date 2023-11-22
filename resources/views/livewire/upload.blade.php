@@ -8,8 +8,10 @@
         cancel () {
             this.uploader.abort()
 
-            this.uploader = null
-            this.progress = 0
+            $nextTick(() => {
+                this.uploader = null
+                this.progress = 0
+            })
         },
 
         submit () {
