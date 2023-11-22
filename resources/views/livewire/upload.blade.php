@@ -1,6 +1,7 @@
 <form
     x-on:submit.prevent="submit"
     x-data="{
+        uploader: null,
         submit () {
             const file = $refs.file.files[0]
 
@@ -8,7 +9,15 @@
                 return
             }
 
-            // chunk
+            this.uploader = createUpload({
+                file: file,
+                endpoint: '{{ route('dummy') }}',
+                method: 'post',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                chunkSize: 10 * 1024, // 10mb
+            })
         }
     }"
 >
