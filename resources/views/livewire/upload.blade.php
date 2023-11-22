@@ -62,6 +62,7 @@
             </div>
 
             <div class="flex items-center space-x-3 text-sm">
+                <button type="button" class="text-blue-500" x-on:click="!uploader.paused ? uploader.pause() : uploader.resume()" x-text="!uploader.paused ? `Pause` : `Resume`">Pause</button>
                 <button type="button" class="text-blue-500" x-on:click="cancel">Cancel</button>
             </div>
         </div>
