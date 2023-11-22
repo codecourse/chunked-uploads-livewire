@@ -22,7 +22,9 @@ class Upload extends Component
         $save = $receiver->receive();
 
         if ($save->isFinished()) {
-            // $save->getFile()
+            return response()->json([
+                'file' => $save->getFile()->getRealPath()
+            ]);
         }
 
         $save->handler();

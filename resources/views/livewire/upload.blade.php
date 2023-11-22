@@ -25,6 +25,14 @@
                 this.progress = progress.detail
             })
 
+            this.uploader.on('chunkSuccess', (response) => {
+                if (!response.detail.response.body) {
+                    return
+                }
+
+                console.log(JSON.parse(response.detail.response.body).file)
+            })
+
             this.uploader.on('success', () => {
                 this.uploader = null
                 this.progress = 0
