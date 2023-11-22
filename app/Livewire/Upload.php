@@ -21,7 +21,7 @@ class Upload extends Component
 
     public function handleSuccess($name, $path)
     {
-        $this->onSuccess(new UploadedFile($path, $name));
+        $this->onSuccess(new UploadedFile(storage_path('app/chunks/' . $path), $name));
     }
 
     public function handleChunk(Request $request)
@@ -36,7 +36,7 @@ class Upload extends Component
 
         if ($save->isFinished()) {
             return response()->json([
-                'file' => $save->getFile()->getRealPath()
+                'file' => $save->getFile()->getFilename()
             ]);
         }
 
